@@ -2,5 +2,5 @@ node_modules
 .idea
 
 logs
-config/local.js
-config/prod.js
+config/*.js
+!config/default.js
