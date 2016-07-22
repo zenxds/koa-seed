@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NODEJS_BIN=/usr/local/bin/node
+NODEJS_BIN=`which node`
 
 # bin/appctl
 cd `dirname $0`/..

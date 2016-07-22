@@ -28,7 +28,7 @@ app.use(static(path.join(__dirname, 'node_modules')))
 app.use(require('./app/router'))
 
 app.on('error', function (err) {
-
+    console.log(err)
 })
 
 app.listen(config.get('port'))

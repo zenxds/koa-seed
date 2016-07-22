@@ -8,6 +8,7 @@
     "test": "npm run test"
   },
   "dependencies": {
+    "co": "~4.6.0",
     "config": "~1.21.0",
     "install": "~0.8.1",
     "koa": "~1.2.0",
