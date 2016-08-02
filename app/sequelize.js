@@ -1,10 +1,11 @@
 const Sequelize = require('sequelize')
 const config = require('config')
-const dbConfig = config.get('mysql')
+const dbConfig = config.get('db')
 
-const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
+const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
     host: dbConfig.host,
-    dialect: 'mysql'
+    port: dbConfig.port,
+    dialect: dbConfig.dialect
 })
 
 sequelize
