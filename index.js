@@ -1,36 +1,42 @@
 const path = require('path')
-const app = require('koa')()
+const co = require('co')
+const Koa = require('koa')
+const config = require('config')
+const convert = require('koa-convert')
 const session = require('koa-session')
-const csrf = require('koa-csrf')
+const CSRF = require('koa-csrf').default
 const render = require('koa-swig')
 const koaStatic = require('koa-static')
-const bodyparser = require('koa-bodyparser')
+const bodyParser = require('koa-bodyparser')
 const json = require('koa-json')
 const logger = require('koa-logger')
-const config = require('config')
+const onerror = require('koa-onerror')
 
-// swig render
-app.context.render = render({
+const app = new Koa()
+app.context.render = co.wrap(render({
     root: path.join(__dirname, 'app/views'),
     autoescape: true,
     ext: 'html'
-})
+}))
 app.keys = config.get('keys')
 
-app.use(logger())
+if (process.env.NODE_ENV == 'dev') {
+  app.use(convert(logger()))
+}
+onerror(app)
 // 放在csrf之前
-app.use(bodyparser())
-app.use(session(app))
-app.use(csrf())
-app.use(json())
-app.use(koaStatic(path.join(__dirname, 'app/public')))
-app.use(koaStatic(path.join(__dirname, 'node_modules')))
+app.use(bodyParser())
+app.use(convert(session(app)))
+app.use(new CSRF())
+app.use(convert(json()))
+app.use(convert(koaStatic(path.join(__dirname, 'app/public'))))
+app.use(convert(koaStatic(path.join(__dirname, 'node_modules'))))
 app.use(require('./app/router'))
 
 app.on('error', function (err) {
-    console.log(err)
+  console.log(err)
 })
 
 app.listen(config.get('port'), function() {
-    console.log(`server is running on port ${this.address().port}`)
+  console.log(`server is running on port ${this.address().port}`)
 })

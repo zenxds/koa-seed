@@ -11,11 +11,11 @@ const sequelize = require('../sequelize')
 const User = sequelize.define('user', {
 
 },  {
-    freezeTableName: true
+  freezeTableName: true
 })
 
 User.sync().then(function () {
-    console.log('User sync')
+  console.log('User sync')
 })
 
 module.exports = User

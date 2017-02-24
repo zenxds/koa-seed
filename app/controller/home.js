@@ -1,9 +1,6 @@
 'use strict'
 
-module.exports = {
-    index: function *() {
-        yield this.render('index', {
-            token: this.csrf
-        })
-    }
+exports.index = async (ctx, next) => {
+  await ctx.render('index', {
+  })
 }
