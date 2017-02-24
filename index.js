@@ -33,10 +33,6 @@ app.use(convert(koaStatic(path.join(__dirname, 'app/public'))))
 app.use(convert(koaStatic(path.join(__dirname, 'node_modules'))))
 app.use(require('./app/router'))
 
-app.on('error', function (err) {
-  console.log(err)
-})
-
 app.listen(config.get('port'), function() {
   console.log(`server is running on port ${this.address().port}`)
 })
