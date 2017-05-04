@@ -1,6 +1,6 @@
 'use strict'
 
-exports.index = async (ctx, next) => {
+exports.index = async(ctx, next) => {
   await ctx.render('index', {
   })
 }
