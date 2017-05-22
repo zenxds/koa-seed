@@ -14,10 +14,10 @@ const app = new Koa()
 app.keys = config.get('keys')
 
 log4js.configure(require('./config/log4js'))
-if (process.env.NODE_ENV == 'dev') {
-  app.use(log4js.koaLogger(log4js.getLogger()))
-} else {
+if (process.env.NODE_ENV == 'prod') {
   app.use(log4js.koaLogger(log4js.getLogger('access')))
+} else {
+  app.use(log4js.koaLogger(log4js.getLogger()))
 }
 
 onerror(app)
@@ -43,3 +43,5 @@ app.use(require('./app/router'))
 app.listen(config.get('port'), function() {
   console.log(`server is running on port ${this.address().port}`)
 })
+
+module.exports = app
