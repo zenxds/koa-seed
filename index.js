@@ -6,6 +6,7 @@ const CSRF = require('koa-csrf')
 const koaStatic = require('koa-static')
 const bodyParser = require('koa-bodyparser')
 const json = require('koa-json')
+const compress = require('koa-compress')
 const onerror = require('koa-onerror')
 const views = require('koa-views')
 const log4js = require('koa-log4')
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV == 'prod') {
 }
 
 onerror(app)
+app.use(compress())
 // 放在csrf之前
 app.use(bodyParser())
 app.use(session(app))
