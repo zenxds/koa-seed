@@ -40,6 +40,7 @@ app.use(views(path.join(__dirname, 'app/view'), {
     }
   }
 }))
+app.use(require('./app/middleware/state'))
 app.use(require('./app/router'))
 
 app.listen(config.get('port'), function() {
