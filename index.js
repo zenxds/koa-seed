@@ -23,6 +23,7 @@ if (process.env.NODE_ENV == 'prod') {
 
 onerror(app)
 app.use(compress())
+app.use(require('./app/middleware/minify')())
 // 放在csrf之前
 app.use(bodyParser())
 app.use(session(app))
