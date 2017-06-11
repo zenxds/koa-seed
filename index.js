@@ -12,6 +12,7 @@ const views = require('koa-views')
 const log4js = require('koa-log4')
 
 const app = new Koa()
+const router = require('./app/router')
 app.keys = config.get('keys')
 
 log4js.configure(require('./config/log4js'))
@@ -42,7 +43,7 @@ app.use(views(path.join(__dirname, 'app/view'), {
   }
 }))
 app.use(require('./app/middleware/state'))
-app.use(require('./app/router'))
+app.use(router.routes())
 
 app.listen(config.get('port'), function() {
   console.log(`server is running on port ${this.address().port}`)

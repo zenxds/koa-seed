@@ -4,4 +4,4 @@ const home = require('./controller/home')
 
 router.get('/', home.index)
 
-module.exports = router.routes()
+module.exports = router
