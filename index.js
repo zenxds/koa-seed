@@ -11,12 +11,13 @@ const onerror = require('koa-onerror')
 const views = require('koa-views')
 const log4js = require('koa-log4')
 
+const isProdEnv = process.env.NODE_ENV == 'prod'
 const app = new Koa()
 const router = require('./app/router')
 app.keys = config.get('keys')
 
 log4js.configure(require('./config/log4js'))
-if (process.env.NODE_ENV == 'prod') {
+if (isProdEnv) {
   app.use(log4js.koaLogger(log4js.getLogger('access')))
 } else {
   app.use(log4js.koaLogger(log4js.getLogger()))
@@ -30,7 +31,9 @@ app.use(bodyParser())
 app.use(session(app))
 app.use(new CSRF())
 app.use(json())
-app.use(koaStatic(path.join(__dirname, 'app/public')))
+app.use(koaStatic(path.join(__dirname, 'app/public'), {
+   maxage: isProdEnv ? 1000 * 3600 * 24 : 0
+}))
 app.use(views(path.join(__dirname, 'app/view'), {
   map: {
     html: 'nunjucks'
