@@ -17,7 +17,7 @@ class MQ {
    * push a task to queue
    * @memberof MQ
    */
-  async push(task) {
+  async create(task) {
     return client.lpushAsync(this.key, JSON.stringify(task))
   }
   

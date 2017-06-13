@@ -4,8 +4,8 @@ const mq = new MQ('mq')
 
 describe('test/mq.js', () => {
 
-  it('should push a task', done => {
-    mq.push({
+  it('should create a task', done => {
+    mq.create({
       name: 'name',
       value: 'value'
     }).then((length) => {
