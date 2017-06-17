@@ -1,7 +1,7 @@
 {
-  "name": "koa-seed",
+  "name": "koa-boilerplate",
   "version": "0.2.0",
-  "description": "koa-seed",
+  "description": "koa-boilerplate",
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=dev nodemon index.js",

@@ -1,4 +1,4 @@
-# koa-seed
+# koa-boilerplate
 
 ```
 npm i
