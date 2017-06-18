@@ -1,6 +1,7 @@
 node_modules
 .idea
 .DS_Store
+.yo-rc.json
 npm-debug.log
 package-lock.json
 
