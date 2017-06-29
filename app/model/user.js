@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const sequelize = require('../sequelize')
+const sequelize = require('../service/sequelize')
 
 // http://sequelize.readthedocs.io/en/latest/docs/models-definition/
 // STRING TEXT INTEGER DATE DATEONLY BOOLEAN
