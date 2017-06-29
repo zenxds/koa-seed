@@ -1,4 +1,4 @@
-const client = require('./redis')
+const client = require('./redis').factory()
 
 /**
  * 消息队列
