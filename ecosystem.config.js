@@ -6,7 +6,10 @@ module.exports = {
   apps : [
     {
       name      : 'koa-seed',
-      script    : 'index.js'
+      script    : 'index.js',
+      env_prod  : {
+        "NODE_ENV": "prod"
+      }
     }
   ],
 
