@@ -2,7 +2,6 @@
 
 ```
 npm i
-mkdir log
 npm start
 ```
 
