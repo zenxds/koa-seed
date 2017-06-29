@@ -69,6 +69,5 @@ typings/
 .yo-rc.json
 package-lock.json
 
-config/*.js
-!config/default.js
-!config/log4js.js
+config/prod.js*
+config/local.js*
