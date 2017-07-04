@@ -7,7 +7,10 @@
     "start": "NODE_ENV=dev nodemon index.js",
     "start:prod": "pm2 startOrReload ecosystem.config.js --env prod",
     "deploy": "pm2 deploy ecosystem.config.js prod",
-    "test": "NODE_ENV=test mocha test/*.js"
+    "test": "NODE_ENV=test mocha test/*.js",
+    "docker:start": "pm2-docker ecosystem.config.js --env prod",
+    "docker:build": "docker build -t ctu/koa .",
+    "docker:run": "docker run -d -p 7002:7002 --rm ctu/koa"
   },
   "dependencies": {
     "config": "^1.26.1",
