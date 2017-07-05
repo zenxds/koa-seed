@@ -1,0 +1,35 @@
+version: '3'
+services:
+  web:
+    image: ctu/koa_app:latest
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+      - redis
+    links:
+      - mysql
+      - redis
+    ports:
+      - "7002:7002"
+
+  mysql:
+    image: mysql:5.6
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql_root
+      MYSQL_DATABASE: koa_app
+      MYSQL_USER: mysql_user
+      MYSQL_PASSWORD: mysql_pwd
+    volumes:
+      - mysql-volume:/var/lib/mysql 
+  
+  redis:
+    restart: always
+    image: redis:latest
+
+
+volumes:
+  mysql-volume:

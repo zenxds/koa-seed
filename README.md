@@ -16,6 +16,14 @@ log/error.log   // 错误log
 
 config/log4js.js  // 日志文件配置
 config/nginx.conf // nginx部署配置
+其他为环境配置文件
+
+app/controller
+app/middleware
+app/model
+app/public
+app/service
+app/view
 ```
 
 ## 部署说明
@@ -24,7 +32,7 @@ config/nginx.conf // nginx部署配置
 
 第一种配置好ecosystem.config.js的deploy部分，然后运行`npm run deploy`即可部署到服务器
 
-第二种首先安装docker，运行`npm run docker:build`生成镜像，然后运行`npm run docker:run`启动容器
+第二种首先安装docker和docker-compose，写好prod配置文件（主要redis和mysql的host要使用主机名），运行`npm run docker:up`
 
 ## tips
 
