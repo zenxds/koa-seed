@@ -9,9 +9,6 @@ services:
     depends_on:
       - mysql
       - redis
-    links:
-      - mysql
-      - redis
     ports:
       - "7002:7002"
 
