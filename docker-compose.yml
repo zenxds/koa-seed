@@ -9,6 +9,9 @@ services:
     depends_on:
       - mysql
       - redis
+    volumes:
+      - koa_app_config:/var/www/config
+      - koa_app_public:/var/www/app/public
     ports:
       - "7002:7002"
 
@@ -30,3 +33,5 @@ services:
 
 volumes:
   mysql-volume:
+  koa_app_config:  
+  koa_app_public:
