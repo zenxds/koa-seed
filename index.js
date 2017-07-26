@@ -11,7 +11,7 @@ const onerror = require('koa-onerror')
 const views = require('koa-views')
 const log4js = require('koa-log4')
 
-const isProdEnv = process.env.NODE_ENV == 'prod'
+const isProdEnv = /prod|docker/.test(process.env.NODE_ENV)
 const app = new Koa()
 const router = require('./app/router')
 app.keys = config.get('keys')
