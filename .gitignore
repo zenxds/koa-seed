@@ -70,4 +70,4 @@ typings/
 package-lock.json
 
 config/prod.js*
-config/local.js*
+config/dev.js*

@@ -8,8 +8,6 @@ npm start
 ## 文件说明
 
 ```
-bin/appctl.sh // prod环境下管理应用启动，使用pm2管理之后就不再需要
-
 log/access.log  // 访问log
 log/app.log     // 应用log
 log/error.log   // 错误log
@@ -30,9 +28,9 @@ app/view
 
 目前有两种部署到服务器的方式，第一种是使用pm2 deploy，第二种是使用docker部署
 
-第一种配置好ecosystem.config.js的deploy部分，然后运行`npm run deploy`即可部署到服务器
+第一种配置好ecosystem.config.js的deploy部分，然后运行`npm run deploy:prd`即可部署到服务器
 
-第二种首先安装docker和docker-compose，写好prod配置文件（主要redis和mysql的host要使用主机名），运行`npm run docker:up`
+第二种首先安装docker和docker-compose，写好docker配置文件（主要redis和mysql的host要使用主机名），运行`npm run deploy:docker`
 
 ## tips
 

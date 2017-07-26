@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   web:
     image: ctu/koa_app:latest
@@ -10,10 +10,14 @@ services:
       - mysql
       - redis
     volumes:
-      - koa_app_config:/var/www/config
-      - koa_app_public:/var/www/app/public
+      - koa-app-config:/var/www/config
+      - koa-app-public:/var/www/app/public
+      - ~/.ssh:/root/.ssh
     ports:
       - "7002:7002"
+    links:
+      - "redis"
+      - "mysql"
 
   mysql:
     image: mysql:5.6
@@ -29,9 +33,11 @@ services:
   redis:
     restart: always
     image: redis:latest
-
+    volumes:
+      - redis-volume:/data
 
 volumes:
   mysql-volume:
-  koa_app_config:  
-  koa_app_public:
+  redis-volume:
+  koa-app-config:
+  koa-app-public:
