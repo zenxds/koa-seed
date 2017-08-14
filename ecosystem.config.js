@@ -7,8 +7,8 @@ module.exports = {
     {
       name      : 'koa-boilerplate',
       script    : 'index.js',
-      env_prod  : {
-        "NODE_ENV": "prod"
+      env_production  : {
+        "NODE_ENV": "production"
       }
     }
   ],
@@ -18,7 +18,7 @@ module.exports = {
    * http://pm2.keymetrics.io/docs/usage/deployment/
    */
   deploy : {
-    prod : {
+    production : {
       user : 'node',
       host : '',
       ref  : 'origin/master',
