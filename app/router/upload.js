@@ -2,8 +2,7 @@ const path = require('path')
 const uuid = require('uuid/v4')
 const Router = require('koa-router')
 const router = new Router()
-const home = require('./controller/home')
-const multer = require('./middleware/multer')
+const multer = require('../middleware/multer')
 
 // 使用multer上传
 const storage = multer.diskStorage({
@@ -28,7 +27,11 @@ const upload = multer({
   }
 })
 
-router.get('/', home.index)
-// router.post('/upload', upload.single('file'), home.upload)
+// router.post('/post', upload.single('file'), async(ctx) => {
+//   const {
+//     body,
+//     file
+//   } = ctx.req
+// })
 
 module.exports = router

@@ -1,5 +1,5 @@
 'use strict'
-const redisClient = require('../service/redis').factory()
+const redisClient = require('../service/redis').getClient()
 
 exports.index = async(ctx, next) => {
   const key = await redisClient.incrAsync('key')
