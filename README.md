@@ -12,8 +12,8 @@ log/access.log  // 访问log
 log/app.log     // 应用log
 log/error.log   // 错误log
 
-config/log4js.js  // 日志文件配置
-config/nginx.conf // nginx部署配置
+config/log4js  // 日志文件配置
+config/nginx // nginx部署配置
 其他为环境配置文件
 
 app/controller

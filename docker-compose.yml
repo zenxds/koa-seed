@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    image: ctu/koa_app:latest
+    image: fe/koa_app:latest
     restart: always
     build:
       context: .
@@ -10,8 +10,8 @@ services:
       - mysql
       - redis
     volumes:
-      - koa-app-config:/var/www/config
-      - koa-app-public:/var/www/app/public
+      - ./config:/var/www/config
+      - ./app/public:/var/www/app/public
       - ~/.ssh:/root/.ssh
     ports:
       - "7002:7002"
@@ -28,7 +28,7 @@ services:
       MYSQL_USER: mysql_user
       MYSQL_PASSWORD: mysql_pwd
     volumes:
-      - mysql-volume:/var/lib/mysql 
+      - mysql-volume:/var/lib/mysql
       - ./config/mysql/my.cnf:/etc/mysql/conf.d/mysql.cnf
 
   redis:

@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const sequelize = require('../service/sequelize')
+const DataTypes = require('sequelize').DataTypes
+const db = require('../service/sequelize')
 
 // http://docs.sequelizejs.com/manual/tutorial/models-definition.html
 // STRING TEXT INTEGER DATE DATEONLY BOOLEAN
@@ -8,7 +8,7 @@ const sequelize = require('../service/sequelize')
 /*
  * 用户表
  */
-const User = sequelize.define('user', {
+const User = db.define('user', {
 
 },  {
   freezeTableName: true

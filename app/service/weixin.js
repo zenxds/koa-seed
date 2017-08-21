@@ -1,7 +1,7 @@
 const crypto = require('crypto')
 const request = require('request-promise-native')
 const weixinConfig = require('config').get('weixin')
-const redisClient = require('../service/redis').factory()
+const redisClient = require('../service/redis').getClient()
 
 const APP_ID = weixinConfig.appid
 const APP_SECRET = weixinConfig.appsecret
@@ -21,7 +21,7 @@ const createTimestamp = () => {
 
 const param = (args) => {
   const keys = Object.keys(args)
-  
+
   // 要按ASCII排序
   return keys.sort().map((key) => {
     return `${key.toLowerCase()}=${args[key]}`
@@ -35,7 +35,7 @@ const sha1 = (str) => {
 }
 
 /**
-* @synopsis 签名算法 
+* @synopsis 签名算法
 *
 * @param jsapi_ticket 用于签名的 jsapi_ticket
 * @param url 用于签名的 url ，注意必须动态获取，不能 hardcode

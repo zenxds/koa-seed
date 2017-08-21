@@ -1,4 +1,4 @@
-const client = require('./redis').factory()
+const client = require('./redis').getClient()
 
 /**
  * 消息队列
@@ -20,11 +20,11 @@ class MQ {
   async create(task) {
     return client.lpushAsync(this.key, JSON.stringify(task))
   }
-  
+
   /**
-   * 
-   * 
-   * 
+   *
+   *
+   *
    * @memberof MQ
    */
   async consume() {

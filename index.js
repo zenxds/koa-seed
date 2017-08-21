@@ -11,17 +11,13 @@ const onerror = require('koa-onerror')
 const views = require('koa-views')
 const log4js = require('koa-log4')
 
-const isProdEnv = /production|docker/.test(process.env.NODE_ENV)
+const isProdEnv = /production/.test(process.env.NODE_ENV)
 const app = new Koa()
 const router = require('./app/router')
 app.keys = config.get('keys')
 
 log4js.configure(require('./config/log4js'))
-if (isProdEnv) {
-  app.use(log4js.koaLogger(log4js.getLogger('access')))
-} else {
-  app.use(log4js.koaLogger(log4js.getLogger()))
-}
+app.use(log4js.koaLogger(isProdEnv ? log4js.getLogger('access') : log4js.getLogger()))
 
 onerror(app)
 app.use(compress())
