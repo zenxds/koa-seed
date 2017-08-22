@@ -30,17 +30,7 @@ app.use(json())
 app.use(koaStatic(path.join(__dirname, 'app/public'), {
    maxage: isProdEnv ? 1000 * 3600 * 24 : 0
 }))
-app.use(views(path.join(__dirname, 'app/view'), {
-  map: {
-    html: 'nunjucks'
-  },
-  extension: 'html',
-  options: {
-    settings: {
-      views: path.join(__dirname, 'app/view')
-    }
-  }
-}))
+app.use(require('./app/middleware/render'))
 app.use(require('./app/middleware/state'))
 app.use(router.routes())
 
