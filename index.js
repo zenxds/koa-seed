@@ -23,7 +23,9 @@ onerror(app)
 app.use(compress())
 app.use(require('./app/middleware/minify')())
 // 放在csrf之前
-app.use(bodyParser())
+app.use(bodyParser({
+  formLimit: '10mb'
+}))
 app.use(session(app))
 app.use(new CSRF())
 app.use(json())
