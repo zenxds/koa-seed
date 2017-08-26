@@ -5,7 +5,8 @@ const dbConfig = config.get('db')
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
   host: dbConfig.host,
   port: dbConfig.port,
-  dialect: dbConfig.dialect
+  dialect: dbConfig.dialect,
+  logging: /production/.test(process.env.NODE_ENV) ? false : console.log
 })
 
 sequelize
