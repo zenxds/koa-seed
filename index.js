@@ -29,6 +29,16 @@ app.use(bodyParser({
 app.use(session(app))
 app.use(new CSRF())
 app.use(json())
+app.use(require('kcors')({
+  credentials: true,
+  keepHeadersOnError: true,
+  maxAge: '86400',
+  allowHeaders: 'Accept,Content-Type,X-Requested-With,csrf-token',
+  origin: (ctx) => {
+    const requestOrigin = ctx.get('Origin')
+    return requestOrigin
+  }
+}))
 app.use(koaStatic(path.join(__dirname, 'app/public'), {
    maxage: isProdEnv ? 1000 * 3600 * 24 : 0
 }))
