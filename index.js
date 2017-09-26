@@ -19,7 +19,15 @@ app.keys = config.get('keys')
 log4js.configure(require('./config/log4js'))
 app.use(log4js.koaLogger(isProduction ? log4js.getLogger('access') : log4js.getLogger()))
 
-onerror(app)
+onerror(app, {
+  json: function(err) {
+    this.status = 200
+    this.body = {
+      success: false,
+      message: err.message
+    }
+  }
+})
 app.use(compress())
 app.use(require('./app/middleware/minify')())
 // 放在csrf之前
