@@ -11,13 +11,13 @@ const onerror = require('koa-onerror')
 const views = require('koa-views')
 const log4js = require('koa-log4')
 
-const isProdEnv = /production/.test(process.env.NODE_ENV)
+const isProduction = /production/.test(process.env.NODE_ENV)
 const app = new Koa()
 const router = require('./app/router')
 app.keys = config.get('keys')
 
 log4js.configure(require('./config/log4js'))
-app.use(log4js.koaLogger(isProdEnv ? log4js.getLogger('access') : log4js.getLogger()))
+app.use(log4js.koaLogger(isProduction ? log4js.getLogger('access') : log4js.getLogger()))
 
 onerror(app)
 app.use(compress())
@@ -40,7 +40,7 @@ app.use(require('kcors')({
   }
 }))
 app.use(koaStatic(path.join(__dirname, 'app/public'), {
-   maxage: isProdEnv ? 1000 * 3600 * 24 : 0
+   maxage: isProduction ? 1000 * 3600 * 24 : 0
 }))
 app.use(require('./app/middleware/render'))
 app.use(require('./app/middleware/state'))
