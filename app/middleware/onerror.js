@@ -6,17 +6,19 @@ const logger = log4js.getLogger('error')
  * onerror handler
  */
 module.exports = async function(ctx, next) {
+  const isAPI = /\/api\//.test(ctx.path)
+
   try {
     await next()
 
-    if (isJSON(ctx.body) && ctx.status === 200) {
+    if (isAPI && ctx.status === 200) {
       ctx.body = {
         success: true,
         data: ctx.body
       }
     }
   } catch (err) {
-    if (isJSON(ctx.body)) {
+    if (isAPI) {
       ctx.body = {
         success: false,
         message: err.message
