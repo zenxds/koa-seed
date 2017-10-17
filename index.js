@@ -7,7 +7,6 @@ const koaStatic = require('koa-static')
 const bodyParser = require('koa-bodyparser')
 const json = require('koa-json')
 const compress = require('koa-compress')
-const onerror = require('koa-onerror')
 const views = require('koa-views')
 const log4js = require('koa-log4')
 
@@ -19,15 +18,6 @@ app.keys = config.get('keys')
 log4js.configure(require('./config/log4js'))
 app.use(log4js.koaLogger(isProduction ? log4js.getLogger('access') : log4js.getLogger()))
 
-onerror(app, {
-  json: function(err) {
-    this.status = 200
-    this.body = {
-      success: false,
-      message: err.message
-    }
-  }
-})
 app.use(compress())
 app.use(require('./app/middleware/minify')())
 // 放在csrf之前
@@ -37,6 +27,8 @@ app.use(bodyParser({
 app.use(session(app))
 app.use(new CSRF())
 app.use(json())
+// 在json化之前
+app.use(require('./app/middleware/onerror'))
 app.use(require('kcors')({
   credentials: true,
   keepHeadersOnError: true,
