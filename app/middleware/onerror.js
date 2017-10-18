@@ -11,7 +11,7 @@ module.exports = async function(ctx, next) {
   try {
     await next()
 
-    if (isAPI && ctx.status === 200) {
+    if (isAPI && validateStatus(ctx.status)) {
       ctx.body = {
         success: true,
         data: ctx.body
@@ -37,4 +37,11 @@ module.exports = async function(ctx, next) {
   if (ctx.status === 404) {
     await ctx.render('404')
   }
+}
+
+/**
+ * from https://github.com/axios/axios
+ */
+function validateStatus(status) {
+  return status >= 200 && status < 300
 }
