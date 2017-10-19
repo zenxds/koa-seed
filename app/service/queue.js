@@ -3,29 +3,24 @@ const client = require('./redis').getClient()
 /**
  * 消息队列
  */
-
-class MQ {
+class Queue {
 
   constructor(key) {
     if (!key) {
-      throw new Error('key must specify for MQ')
+      throw new Error('key must specify for Queue')
     }
     this.key = key
   }
 
   /**
-   * push a task to queue
-   * @memberof MQ
+   * create a task to queue
    */
   async create(task) {
     return client.lpushAsync(this.key, JSON.stringify(task))
   }
 
   /**
-   *
-   *
-   *
-   * @memberof MQ
+   * consume a task
    */
   async consume() {
     return client.rpopAsync(this.key).then((task) => {
@@ -36,7 +31,6 @@ class MQ {
       return Promise.reject()
     })
   }
-
 }
 
-module.exports = MQ
+module.exports = Queue
