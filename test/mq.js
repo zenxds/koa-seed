@@ -1,11 +1,11 @@
 const expect = require('chai').expect
-const MQ = require('../app/service/mq')
-const mq = new MQ('mq')
+const Quque = require('../app/service/queue')
+const q = new Quque('testQueue')
 
 describe('test/mq.js', () => {
 
   it('should create a task', done => {
-    mq.create({
+    q.create({
       name: 'name',
       value: 'value'
     }).then((length) => {
@@ -18,7 +18,7 @@ describe('test/mq.js', () => {
 
 
   it('should consume a task', done => {
-    mq.consume().then((task) => {
+    q.consume().then((task) => {
       expect(task).to.be.an('object')
       done()
     }).catch((err) => {
