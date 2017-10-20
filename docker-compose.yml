@@ -14,6 +14,7 @@ services:
       - ./config:/var/www/config
       - ./app/public:/var/www/app/public
       - ~/.ssh:/root/.ssh
+      - ~/.gitconfig:/root/.gitconfig
     ports:
       - "7002:7002"
     links:
