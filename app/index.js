@@ -1,6 +1,8 @@
+const fs = require('fs')
 const path = require('path')
-const Koa = require('koa')
 const config = require('config')
+const rfs = require('rotating-file-stream')
+const Koa = require('koa')
 const session = require('koa-session')
 const CSRF = require('koa-csrf')
 const koaStatic = require('koa-static')
@@ -8,16 +10,23 @@ const bodyParser = require('koa-bodyparser')
 const json = require('koa-json')
 const compress = require('koa-compress')
 const views = require('koa-views')
-const log4js = require('koa-log4')
 
 const isProduction = /production/.test(process.env.NODE_ENV)
 const app = new Koa()
 const router = require('./router')
 app.keys = config.get('keys')
 
-log4js.configure(require('../config/log4js'))
-app.use(log4js.koaLogger(isProduction ? log4js.getLogger('access') : log4js.getLogger()))
+require('log4js').configure(require('../config/log4js'))
 
+const loggerOptions = {}
+if (isProduction) {
+  loggerOptions.stream = rfs('access.log', {
+    interval: '1d', // rotate daily
+    path: path.join(__dirname, '../log')
+  })
+}
+
+app.use(require('./middleware/logger')(isProduction ? 'combined' : 'dev', loggerOptions))
 app.use(compress())
 app.use(require('./middleware/minify')())
 // 放在csrf之前

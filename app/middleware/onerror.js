@@ -1,5 +1,5 @@
 const isJSON = require('koa-is-json')
-const log4js = require('koa-log4')
+const log4js = require('log4js')
 const logger = log4js.getLogger('error')
 
 /**
