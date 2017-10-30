@@ -17,15 +17,12 @@ app.keys = config.get('keys')
 
 require('log4js').configure(require('../config/log4js'))
 
-const loggerOptions = {}
-if (isProduction) {
-  loggerOptions.stream = rfs('access.log', {
+app.use(require('./middleware/logger')(isProduction ? 'combined' : 'dev', isProduction ? {
+  stream: rfs('access.log', {
     interval: '1d', // rotate daily
     path: path.join(__dirname, '../log')
   })
-}
-
-app.use(require('./middleware/logger')(isProduction ? 'combined' : 'dev', loggerOptions))
+} : {}))
 app.use(compress())
 app.use(require('./middleware/minify')())
 // 放在csrf之前
