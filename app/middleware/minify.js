@@ -6,7 +6,7 @@ const minify = require('html-minifier').minify
 module.exports = function(options) {
   return async function(ctx, next) {
     await next()
-    
+
     if (!ctx.response.is('html')) {
       return
     }
@@ -19,8 +19,12 @@ module.exports = function(options) {
     if (Buffer.isBuffer(body)) {
       body = body.toString()
     }
-    ctx.body = minify(body, Object.assign({
-      collapseWhitespace: true
-    }, options))
+
+    // 压缩可能出错
+    try {
+      ctx.body = minify(body, Object.assign({
+        collapseWhitespace: true
+      }, options))
+    } catch(e) {}
   }
 }
