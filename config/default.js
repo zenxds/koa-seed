@@ -22,5 +22,7 @@ module.exports = {
     port: 6379,
     db: 0
     // password: null
-  }
+  },
+
+  staticVersion: '0.1.0'
 }
