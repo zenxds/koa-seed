@@ -26,12 +26,10 @@ app/view
 
 ## 部署说明
 
-目前有两种部署到服务器的方式，第一种是使用pm2 deploy，第二种是使用docker部署
+目前推荐使用docker部署
 
-第一种配置好ecosystem.config.js的deploy部分，然后运行`npm run deploy:prd`即可部署到服务器
-
-第二种首先安装docker和docker-compose，写好docker配置文件（主要redis和mysql的host要使用主机名），运行`npm run deploy:docker`
+首先安装docker和docker-compose，写好docker配置文件，运行`npm run deploy:docker`
 
 ## tips
 
-bodyparser有提交长度限制
+bodyparser有提交长度限制，需要额外配置

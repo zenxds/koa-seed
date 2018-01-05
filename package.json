@@ -5,11 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=dev nodemon index.js",
-    "start:prod": "pm2 startOrReload ecosystem.config.js --env production",
-    "deploy:prod": "pm2 deploy ecosystem.config.js production",
-    "test": "NODE_ENV=test mocha test/*.js",
     "start:docker": "pm2-docker ecosystem.config.js --env production",
-    "deploy:docker": "docker-compose up -d"
+    "test": "NODE_ENV=test mocha test/*.js",
+    "deploy:docker": "node script/updateVersion.js && docker-compose up -d --build"
   },
   "dependencies": {
     "config": "^1.26.1",
