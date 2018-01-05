@@ -13,7 +13,7 @@ WORKDIR $APP_DIR
 COPY . $APP_DIR
 
 RUN npm install -g yarn --registry=https://registry.dingxiang-inc.net \
-    && yarn install --registry=https://registry.dingxiang-inc.net
+    && yarn install --production --registry=https://registry.dingxiang-inc.net
 
 EXPOSE 7002
 
