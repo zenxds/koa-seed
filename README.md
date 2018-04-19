@@ -1,7 +1,7 @@
 # koa-boilerplate
 
 ```
-npm i
+yarn i
 npm start
 ```
 
@@ -12,16 +12,18 @@ log/access.log  // 访问log
 log/app.log     // 应用log
 log/error.log   // 错误log
 
-config/log4js  // 日志文件配置
-config/nginx // nginx部署配置
+config/log4js   // 日志文件配置
+config/nginx    // nginx部署配置
+config/mysql    // mysql配置
 其他为环境配置文件
 
 app/controller
 app/middleware
 app/model
-app/public
 app/service
 app/view
+app/router
+app/public
 ```
 
 ## 部署说明
