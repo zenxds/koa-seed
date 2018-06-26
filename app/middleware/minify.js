@@ -25,6 +25,6 @@ module.exports = function(options) {
       ctx.body = minify(body, Object.assign({
         collapseWhitespace: true
       }, options))
-    } catch(e) {}
+    } catch(err) {}
   }
 }
