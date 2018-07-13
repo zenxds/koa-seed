@@ -1,6 +1,4 @@
 const isJSON = require('koa-is-json')
-const log4js = require('log4js')
-const logger = log4js.getLogger('error')
 
 /**
  * onerror handler
@@ -30,7 +28,7 @@ module.exports = async function(ctx, next) {
       })
     }
 
-    logger.error(err.message)
+    ctx.app.errorLogger.error(err.message)
     ctx.app.emit('error', err, ctx)
   }
 
