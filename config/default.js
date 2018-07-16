@@ -24,5 +24,7 @@ module.exports = {
     // password: null
   },
 
+  ignoreOrigin: false,
+
   staticVersion: '0.1.0'
 }

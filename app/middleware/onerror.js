@@ -28,7 +28,7 @@ module.exports = async function(ctx, next) {
       })
     }
 
-    ctx.app.errorLogger.error(err.message)
+    ctx.app.errorLogger.error(`${ctx.path}: ${err.message}`)
     ctx.app.emit('error', err, ctx)
   }
 
