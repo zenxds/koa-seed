@@ -9,11 +9,15 @@ module.exports = async function(ctx, next) {
   try {
     await next()
 
-    if (isAPI && validateStatus(ctx.status)) {
-      ctx.body = {
+    if (isAPI) {
+      ctx.body = validateStatus(ctx.status) ? {
         success: true,
         data: ctx.body
+      } : {
+        success: false,
+        message: ctx.message
       }
+      return
     }
   } catch (err) {
     if (isAPI) {
@@ -21,19 +25,23 @@ module.exports = async function(ctx, next) {
         success: false,
         message: err.message
       }
-    } else {
-      ctx.status = err.status || 500
-      await ctx.render('500', {
-        err: err
-      })
+      return
     }
 
-    ctx.app.errorLogger.error(`${ctx.path}: ${err.message}`)
-    ctx.app.emit('error', err, ctx)
+    ctx.status = err.status || 500
+
+    // throw 404
+    if (ctx.status === 404) {
+      await ctx.render('404', { message: err.message })
+    } else {
+      await ctx.render('500', { err })
+      ctx.app.emit('error', err, ctx)
+    }
   }
 
-  if (ctx.status === 404) {
-    await ctx.render('404')
+  // not found 404
+  if (ctx.status === 404 && !ctx.body) {
+    await ctx.render('404', { message: ctx.message })
   }
 }
 
