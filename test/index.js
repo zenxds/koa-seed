@@ -1,4 +1,3 @@
-const expect = require('chai').expect
 const request = require('supertest')
 const app = require('../app')
 
@@ -9,7 +8,7 @@ describe('test/index.js', () => {
       .get('/')
       .expect(200)
       .end((err, res) => {
-        expect(err).to.be.a('null')
+        expect(err).toBeNull()
         done()
       })
   })
