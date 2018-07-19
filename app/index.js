@@ -5,7 +5,7 @@ const { Application, middlewares } = require('the-rang')
 const app = new Application({
   keys: config.get('keys')
 })
-const router = require('./router')
+const router = require('./router')(app)
 
 app.use(middlewares.logger(app))
 app.use(middlewares.compress())
@@ -24,13 +24,5 @@ app.use(middlewares.onerror())
 app.use(middlewares.render(app))
 app.use(require('./middleware/state'))
 app.use(router.routes())
-
-app.listen(config.get('port'), function() {
-  console.log(`server is running on port ${this.address().port}`)
-})
-
-app.on('error', (err, ctx) => {
-  app.errorLogger.error(`${ctx.path}: ${err.message}`)
-})
 
 module.exports = app

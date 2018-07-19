@@ -2,7 +2,7 @@
 
 ```
 yarn i
-npm start
+yarn start
 ```
 
 ## 文件说明
@@ -31,7 +31,3 @@ app/public
 目前推荐使用docker部署
 
 首先安装docker和docker-compose，写好docker配置文件，运行`npm run deploy:docker`
-
-## tips
-
-bodyparser有提交长度限制，需要额外配置

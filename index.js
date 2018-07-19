@@ -1,23 +1,11 @@
-// const cluster = require('cluster')
-// const numCPUs = require('os').cpus().length
+const config = require('config')
 
-// if (cluster.isMaster) {
-//   console.log(`Master ${process.pid} is running`)
+const app = require('./app')
 
-//   // Fork workers.
-//   for (let i = 0; i < numCPUs; i++) {
-//     cluster.fork()
-//   }
+app.listen(config.get('port'), function() {
+  console.log(`server is running on port ${this.address().port}`)
+})
 
-//   cluster.on('exit', (worker, code, signal) => {
-//     console.log(`worker ${worker.process.pid} died`)
-//   })
-// } else {
-//   require('./app')
-//   console.log(`Worker ${process.pid} started`)
-// }
-
-/**
- * use pm2 to cluster
- */
-require('./app')
+app.on('error', (err, ctx) => {
+  app.errorLogger.error(`${ctx.path}: ${err.message}`)
+})

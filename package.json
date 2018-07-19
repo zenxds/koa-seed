@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=dev nodemon index.js",
     "start:docker": "pm2-docker ecosystem.config.js --env production",
-    "test": "NODE_ENV=test mocha test/*.js",
+    "test": "NODE_ENV=dev jest --detectOpenHandles",
     "deploy:docker": "node script/updateVersion.js && docker-compose up -d --build"
   },
   "dependencies": {
@@ -15,7 +15,7 @@
     "pm2": "^2.10.2",
     "redis-promisify": "^0.1.1",
     "sequelize": "^4.37.6",
-    "the-rang": "^0.1.3",
+    "the-rang": "^0.1.4",
     "uuid": "^3.2.1"
   },
   "repository": {

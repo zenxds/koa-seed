@@ -16,8 +16,8 @@ const User = db.define('user', {
   paranoid: true
 })
 
-User.sync().then(function () {
-  console.log('User sync')
-})
+// User.sync().then(function () {
+//   console.log('User sync')
+// })
 
 module.exports = User

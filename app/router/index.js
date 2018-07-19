@@ -1,8 +1,9 @@
 const { Router } = require('the-rang')
-const router = new Router()
 
-const home = require('../controller/home')
+module.exports = app => {
+  const router = new Router()
 
-router.get('/', home.index)
+  router.get('/', app.controllers.home.index)
 
-module.exports = router
+  return router
+}

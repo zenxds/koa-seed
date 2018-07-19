@@ -3,7 +3,7 @@ const app = require('../app')
 
 describe('test/index.js', () => {
 
-  it('should test index', done => {
+  test('should test index', done => {
     request(app.callback())
       .get('/')
       .expect(200)
