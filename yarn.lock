@@ -4753,15 +4753,17 @@ test-exclude@^4.2.1:
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
 
-the-rang@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/the-rang/-/the-rang-0.1.4.tgz#ed9656c3fb66c51adfcb299cbe45388afaff25aa"
+the-rang@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.npmjs.org/the-rang/-/the-rang-0.1.7.tgz#f98e84b70951679bb7b2bd87fe9068600271b597"
   dependencies:
     "@koa/cors" "2"
+    delegates "^1.0.0"
     extend2 "^1.0.0"
     html-minifier "^3.5.19"
     koa "^2.5.2"
     koa-bodyparser "^4.2.1"
+    koa-compose "^4.1.0"
     koa-compress "^3.0.0"
     koa-csrf "^3.0.6"
     koa-json "^2.0.2"

@@ -22,7 +22,7 @@ app.use(middlewares.static(path.join(app.root, 'app/public'), {
 // 返回的时候在json化之前
 app.use(middlewares.onerror())
 app.use(middlewares.render(app))
-app.use(require('./middleware/state'))
+app.use(app.middlewares.state)
 app.use(router.routes())
 
 module.exports = app
