@@ -15,8 +15,7 @@
     "pm2": "^2.10.2",
     "redis-promisify": "^0.1.1",
     "sequelize": "^4.37.6",
-    "the-rang": "^0.1.9",
-    "uuid": "^3.2.1"
+    "the-rang": "^0.2.0"
   },
   "repository": {
     "type": "git",

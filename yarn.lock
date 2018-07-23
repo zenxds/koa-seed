@@ -4753,9 +4753,9 @@ test-exclude@^4.2.1:
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
 
-the-rang@^0.1.9:
-  version "0.1.9"
-  resolved "https://registry.npmjs.org/the-rang/-/the-rang-0.1.9.tgz#dc54c976e81f3e0331cdc045b31dce1e2326e30d"
+the-rang@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/the-rang/-/the-rang-0.2.0.tgz#458fbe62ec14df3a6214b72550663ee745fc6c01"
   dependencies:
     "@koa/cors" "2"
     delegates "^1.0.0"
