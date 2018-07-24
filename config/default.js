@@ -18,6 +18,10 @@ module.exports = {
     // password: null
   },
 
+  plugins: {
+
+  },
+
   ignoreOrigin: false,
 
   staticVersion: '0.1.0'
