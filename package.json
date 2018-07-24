@@ -1,12 +1,12 @@
 {
   "name": "koa-boilerplate",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "koa-boilerplate",
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=dev nodemon index.js",
     "start:docker": "pm2-docker ecosystem.config.js --env production",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --forceExit",
     "deploy:docker": "node script/updateVersion.js && docker-compose up -d --build"
   },
   "dependencies": {
@@ -15,7 +15,7 @@
     "pm2": "^2.10.2",
     "redis-promisify": "^0.1.1",
     "sequelize": "^4.37.6",
-    "the-rang": "^0.3.1"
+    "the-rang": "^0.3.2"
   },
   "repository": {
     "type": "git",
