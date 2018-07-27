@@ -1,10 +1,12 @@
 const config = require('config')
 const redis = require("redis-promisify")
-const client = redis.createClient(config.get('redis'))
+
+const redisConfig = config.get('redis')
+const client = redis.createClient(redisConfig)
 
 module.exports = {
-  factory: () => {
-    return redis.createClient(config.get('redis'))
+  factory: (cfg={}) => {
+    return redis.createClient(Object.assign({}, redisConfig, cfg))
   },
 
   getClient: () => {
