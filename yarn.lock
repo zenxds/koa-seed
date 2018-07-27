@@ -244,6 +244,12 @@ async-listener@^0.6.0:
     semver "^5.3.0"
     shimmer "^1.1.0"
 
+async-validator@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.npmjs.org/async-validator/-/async-validator-1.8.5.tgz#dc3e08ec1fd0dddb67e60842f02c0cd1cec6d7f0"
+  dependencies:
+    babel-runtime "6.x"
+
 async@1.5, async@^1.4.0, async@^1.5:
   version "1.5.2"
   resolved "https://registry.npmjs.org/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
@@ -385,7 +391,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+babel-runtime@6.x, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.npmjs.org/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -4753,11 +4759,12 @@ test-exclude@^4.2.1:
     read-pkg-up "^1.0.1"
     require-main-filename "^1.0.1"
 
-the-rang@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.npmjs.org/the-rang/-/the-rang-0.3.2.tgz#78563338ca4fd33fb5a1a9d6c09b3bfb3403fdc0"
+the-rang@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.npmjs.org/the-rang/-/the-rang-0.3.3.tgz#b1ac3185a3ac3708980f2457b9b92c286f2178f7"
   dependencies:
     "@koa/cors" "2"
+    async-validator "^1.8.5"
     delegates "^1.0.0"
     extend2 "^1.0.0"
     html-minifier "^3.5.19"

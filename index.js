@@ -1,8 +1,8 @@
 const config = require('config')
-const RedisStore = require('./lib/RedisStore')
 const app = require('./app')
 const router = require('./app/router')(app)
 const { middlewares, services, errorLogger, isProduction } = app
+const { RedisStore } = middlewares.session
 
 app.use(middlewares.logger(app))
 app.use(middlewares.compress())
