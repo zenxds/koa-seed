@@ -1,6 +1,9 @@
+test
 node_modules
 npm-debug.log
-.idea
-.vscode
-.yo-rc.json
+yarn-error.log
 package-lock.json
+
+.editorconfig
+.yo-rc.json
+.git

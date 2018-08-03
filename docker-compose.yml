@@ -12,9 +12,10 @@ services:
       - redis
     volumes:
       - ./config:/var/www/config
+      - ./log:/var/www/log
       - ./app/public:/var/www/app/public
-      - ~/.ssh:/root/.ssh
-      - ~/.gitconfig:/root/.gitconfig
+      # - ~/.ssh:/root/.ssh
+      # - ~/.gitconfig:/root/.gitconfig
     ports:
       - "7002:7002"
     links:

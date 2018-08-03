@@ -12,7 +12,8 @@ WORKDIR $APP_DIR
 
 COPY . $APP_DIR
 
-RUN yarn install --production --registry=https://registry.dingxiang-inc.net
+RUN yarn install --production --registry=https://registry.dingxiang-inc.net \
+    && yarn cache clean
 
 EXPOSE 7002
 
