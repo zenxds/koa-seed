@@ -4,11 +4,17 @@
     "ecmaVersion": 8
   },
   "env": {
-    "node": true
+    "node": true,
+    "jest": true
   },
   "extends": [
     "eslint:recommended"
   ],
+  "globals": {
+    "Promise": true,
+    "Symbol": true,
+    "Proxy": true
+  },
   "rules": {
     "no-unused-vars": 0,
     "no-console": 0,
