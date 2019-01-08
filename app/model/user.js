@@ -8,13 +8,15 @@ const db = require('../service/sequelize')
 /*
  * 用户表
  */
-const User = db.define('user', {
-
-},  {
-  freezeTableName: true,
-  // 逻辑删除
-  paranoid: true
-})
+const User = db.define(
+  'user',
+  {},
+  {
+    freezeTableName: true,
+    // 逻辑删除
+    paranoid: true
+  }
+)
 
 // User.sync().then(function () {
 //   console.log('User sync')
