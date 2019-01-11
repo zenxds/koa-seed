@@ -8,7 +8,6 @@ app.use(middlewares.state)
 app.use(router.routes())
 
 describe('test/index.js', () => {
-
   test('should test index', done => {
     request(app.callback())
       .get('/')
@@ -18,5 +17,4 @@ describe('test/index.js', () => {
         done()
       })
   })
-
 })

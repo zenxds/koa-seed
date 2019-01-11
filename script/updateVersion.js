@@ -9,5 +9,8 @@ if (fs.existsSync(configFile)) {
   version[version.length - 1]++
 
   config.staticVersion = version.join('.')
-  fs.writeFileSync(configFile, 'module.exports = ' + JSON.stringify(config, null, 2))
+  fs.writeFileSync(
+    configFile,
+    'module.exports = ' + JSON.stringify(config, null, 2)
+  )
 }
