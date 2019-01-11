@@ -12,7 +12,7 @@ describe('test/index.js', () => {
     request(app.callback())
       .get('/')
       .expect(200)
-      .end((err, res) => {
+      .end(err => {
         expect(err).toBeNull()
         done()
       })
