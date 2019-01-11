@@ -17,7 +17,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "{app,script,test}/**/*.js": [
       "yarn test",
       "yarn lint",
       "yarn prettier",
