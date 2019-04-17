@@ -28,7 +28,7 @@
     "config": "^3.0.1",
     "pm2": "^3.0.4",
     "redis-promisify": "^0.1.1",
-    "the-rang": "^0.4.0"
+    "the-rang": "^0.4.1"
   },
   "repository": {
     "type": "git",
